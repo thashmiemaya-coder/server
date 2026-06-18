@@ -27,7 +27,7 @@ app.use(mongoSanitize());
 app.use(hpp());
 app.use(
   cors({
-    origin: process.env.CLIENT_URL?.split(',') || '*',
+    origin: 'http://localhost:5173',
     credentials: true,
   })
 );
