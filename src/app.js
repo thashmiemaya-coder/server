@@ -25,9 +25,22 @@ app.use(cookieParser());
 app.use(helmet());
 app.use(mongoSanitize());
 app.use(hpp());
+const allowedOrigins = (
+  process.env.CLIENT_URL?.split(',').map((url) => url.trim()) || [
+    'https://book-heaven-frontend-sand.vercel.app',
+  ]
+);
+const vercelPreviewPattern = /^https:\/\/book-heaven-frontend-[a-z0-9]+-thashmiemaya-coders-projects\.vercel\.app$/;
+
 app.use(
   cors({
-    origin: 'https://book-heaven-frontend-sand.vercel.app',
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin) || vercelPreviewPattern.test(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
     credentials: true,
   })
 );
