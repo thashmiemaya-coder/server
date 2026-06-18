@@ -27,7 +27,7 @@ app.use(mongoSanitize());
 app.use(hpp());
 app.use(
   cors({
-    origin: 'http://localhost:5173',
+    origin: 'https://book-heaven-frontend-sand.vercel.app',
     credentials: true,
   })
 );
