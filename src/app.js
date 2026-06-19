@@ -27,7 +27,7 @@ app.use(mongoSanitize());
 app.use(hpp());
 app.use(
   cors({
-    origin: 'book-heaven-frontend-bojjydmr9-thashmiemaya-coders-projects.vercel.app',
+    origin: 'https://book-heaven-frontend-sand.vercel.app',
     credentials: true,
   })
 );
